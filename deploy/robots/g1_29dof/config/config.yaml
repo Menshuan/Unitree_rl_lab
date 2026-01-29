@@ -1,0 +1,195 @@
+FSM:
+  _: # enabled fsms
+    Passive:
+      id: 1
+    FixStand:
+      id: 2
+    Velocity:
+      id: 3
+      type: RLBase
+    # AMP_Walk:
+    #   id: 4
+    #   type: RLBase
+
+    Mimic_Dance_102: # uncomment to enable
+      id: 101
+      type: Mimic
+    Mimic_Gangnam_Style:
+      id: 102
+      type: Mimic
+    Mimic_Dance_Confusing:
+      id: 201
+      type: Mimic
+    Mimic_Dance_Chartz:
+      id: 202
+      type: Mimic
+    Mimic_Fight:
+      id: 203
+      type: Mimic
+    Mimic_Cartwheel:
+      id: 204
+      type: Mimic
+    Mimic_Worry:
+      id: 205
+      type: Mimic
+    Mimic_Dance_203:
+      id: 206
+      type: Mimic
+
+  Passive:
+    transitions: 
+      FixStand: LT + up.on_pressed
+    mode: [
+      1,1,1,1,1,1,
+      1,1,1,1,1,1,
+      1,1,1,
+      1,1,1,1,1,1,1,
+      1,1,1,1,1,1,1,
+    ]
+    kd: [
+      3,3,3,3,3,3,
+      3,3,3,3,3,3,
+      3,3,3,
+      3,3,3,3,3,3,3,  
+      3,3,3,3,3,3,3,  
+    ]
+  FixStand:
+    transitions: 
+      Passive: LT + B.on_pressed
+      Velocity: RB + X.on_pressed
+      # AMP_Walk: RT(2s) + right.on_pressed
+    kp: [
+      100., 100., 100., 150., 40., 40.,
+      100., 100., 100., 150., 40., 40.,
+      200,200,200,
+      40,40,40,40,40,40,40,
+      40,40,40,40,40,40,40,
+    ]
+    kd: [
+      2,2,2,4,2,2,
+      2,2,2,4,2,2,
+      5,5,5,
+      10,10,10,10,10,10,10,
+      10,10,10,10,10,10,10,
+    ]
+    ts: [0, 3]
+    qs: [
+      [],
+      [ -0.24, 0,0,0.42,-0.23,0,
+        -0.24, 0,0,0.42,-0.23,0,
+        0,0,0,
+        0.18, 0.35,0,0.0,0.0, 0,0,
+        0.18,-0.35,0,0.0,0.0, 0,0
+      ]
+    ]
+  Velocity:
+    transitions: 
+      Passive: LT + B.on_pressed
+      # AMP_Walk: RT(2s) + right.on_pressed
+      Mimic_Dance_102: LT(2s) + down.on_pressed
+      Mimic_Gangnam_Style: LT(2s) + left.on_pressed
+      Mimic_Dance_Confusing: RT(2s) + up.on_pressed
+      Mimic_Dance_Chartz: RT(2s) + left.on_pressed
+      Mimic_Fight: RT(2s) + right.on_pressed
+      Mimic_Cartwheel: RT(2s) + down.on_pressed
+      Mimic_Worry: RT(2s) + B.on_pressed
+      Mimic_Dance_203: RT(2s) + X.on_pressed
+
+    policy_dir: config/policy/velocity
+    # policy_dir: ../../../logs/rsl_rl/unitree_g1_29dof_velocity
+
+  Mimic_Dance_102:
+    transitions: 
+      Passive: LT + B.on_pressed
+      Velocity: RB + X.on_pressed
+    fps: 60
+    motion_file: config/policy/mimic/dance_102/params/G1_Take_102.bvh_60hz.csv
+    policy_dir: config/policy/mimic/dance_102/
+    time_start: 2.8
+    time_end: 24.0
+
+  Mimic_Gangnam_Style:
+    transitions: 
+      Passive: LT + B.on_pressed
+      Velocity: RB + X.on_pressed
+    fps: 60
+    motion_file: config/policy/mimic/gangnam_style/params/G1_gangnam_style_V01.bvh_60hz.csv
+    policy_dir: config/policy/mimic/gangnam_style/
+    time_start: 5.2
+    time_end: 25.5
+
+  # AMP_Walk:
+  #   transitions:
+  #     Passive: LT + B.on_pressed
+  #     Velocity: RB + X.on_pressed
+  #   policy_dir: config/policy/amp/v1
+
+  Mimic_Dance_Confusing:
+    transitions:
+      Passive: LT + B.on_pressed
+      Velocity: RB + X.on_pressed
+    fps: 30
+    motion_file: config/policy/mimic/confusing/params/dance1_subject3.csv
+    policy_dir: config/policy/mimic/confusing/
+    time_start: 1.5
+    time_end: 130.0
+
+  Mimic_Dance_Chartz:
+    transitions:
+      Passive: LT + B.on_pressed
+      Velocity: RB + X.on_pressed
+    fps: 30
+    motion_file: config/policy/mimic/chartz/params/dance1_subject2.csv
+    policy_dir: config/policy/mimic/chartz/
+    time_start: 1.5
+    time_end: 131.1
+
+  Mimic_Fight:
+    transitions:
+      Passive: LT + B.on_pressed
+      Velocity: RB + X.on_pressed
+    fps: 30
+    motion_file: config/policy/mimic/fight/params/fightAndSports1_subject4.csv
+    policy_dir: config/policy/mimic/fight/
+    time_start: 0.1
+    time_end: 27.8
+
+  # 单独双侧空翻
+  # Mimic_Cartwheel:
+  #   transitions:
+  #     Passive: LT + B.on_pressed
+  #     Velocity: RB + X.on_pressed
+  #   fps: 30
+  #   motion_file: config/policy/mimic/cartwheel/params/dance1_subject1.csv
+  #   policy_dir: config/policy/mimic/cartwheel/
+  #   time_start: 103.1
+  #   time_end: 120.1
+  Mimic_Cartwheel:
+    transitions:
+      Passive: LT + B.on_pressed
+      Velocity: RB + X.on_pressed
+    fps: 30
+    motion_file: config/policy/mimic/cartwheel/params/dance1_subject1.csv
+    policy_dir: config/policy/mimic/cartwheel/
+    time_start: 0.1
+    time_end: 120.1
+
+  Mimic_Worry:
+    transitions:
+      Passive: LT + B.on_pressed
+      Velocity: RB + X.on_pressed
+    fps: 30
+    motion_file: config/policy/mimic/worry/params/worry.csv
+    policy_dir: config/policy/mimic/worry/
+    time_start: 0.1
+    time_end: 2.2
+
+  Mimic_Dance_203:
+    transitions:
+      Passive: LT + B.on_pressed
+      Velocity: RB + X.on_pressed
+    fps: 30
+    motion_file: config/policy/mimic/dance_203/params/dance2_subject3.csv
+    policy_dir: config/policy/mimic/dance_203/
+    time_start: 0.1
+    time_end: 225.5
