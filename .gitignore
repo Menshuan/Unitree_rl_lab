@@ -73,6 +73,7 @@ datasets
 
 # Mimic
 *.npz
+*.csv
 
 backup/
 unitree_model/
