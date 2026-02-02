@@ -73,10 +73,10 @@ LOG_FILE="$LOG_DATE_DIR/$(date +%H-%M-%S).log"
 
 
 
-nohup python scripts/rsl_rl/train.py \
-        --task GLR-M3-23dof-Mimic-Chartz --experiment_name Chartz \
-        --device cuda:0 --headless \
-        > "$LOG_FILE" 2>&1 &
+# nohup python scripts/rsl_rl/train.py \
+#         --task GLR-M3-23dof-Mimic-Chartz --experiment_name Chartz \
+#         --device cuda:0 --headless \
+#         > "$LOG_FILE" 2>&1 &
 # nohup python scripts/rsl_rl/train.py \
 #         --task GLR-M3-23dof-Mimic-Chartz_Rough --experiment_name Chartz \
 #         --resume --load_run 2026-01-29_11-51-10 \
@@ -85,7 +85,7 @@ nohup python scripts/rsl_rl/train.py \
 # python3 scripts/rsl_rl/train.py --task GLR-M3-23dof-Mimic-SideKick --experiment_name SideKick --num_envs 4 --device cuda:0 \
 #         --kit_args "--/log/level=error --/log/outputStreamLevel=error --/log/fileLogLevel=error"
 
-
+################################################## Walk ##################################################
 # python3 scripts/rsl_rl/train.py --task GLR-M3-23dof-Velocity --experiment_name Test --num_envs 4 --device cuda:0 --headless \
 #         --kit_args "--/log/level=error --/log/outputStreamLevel=error --/log/fileLogLevel=error"
 
@@ -113,3 +113,9 @@ nohup python scripts/rsl_rl/train.py \
 #         --resume --load_run 2026-01-23_15-54-08 --run_name NewPD \
 #         --device cuda:0 --headless \
 #         > "$LOG_FILE" 2>&1 &
+
+
+nohup python scripts/rsl_rl/train.py \
+        --task GLR-M3-23dof_parallel-Mimic-Chartz --experiment_name Chartz_Parallel \
+        --device cuda:0 --headless \
+        > "$LOG_FILE" 2>&1 &

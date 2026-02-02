@@ -28,7 +28,7 @@
 #         --kit_args "--/log/level=error --/log/outputStreamLevel=error --/log/fileLogLevel=error"
 
 python scripts/rsl_rl/play.py --task GLR-M3-23dof-Mimic-Chartz --experiment_name Chartz \
-        --resume --load_run 2026-01-12_09-07-49  \
+        --resume --load_run 2026-01-30_17-45-59  \
         --kit_args "--/log/level=error --/log/outputStreamLevel=error --/log/fileLogLevel=error"
 
 # python scripts/rsl_rl/play.py --task GLR-M3-23dof-Mimic-SideKick --experiment_name SideKick \

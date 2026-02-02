@@ -68,8 +68,8 @@ M3_ISAAC_JOINT_NAMES = [
     "left_hip_roll", "right_hip_roll",               "left_shoulder_pitch", "right_shoulder_pitch",
     "left_hip_yaw", "right_hip_yaw",                 "left_shoulder_roll", "right_shoulder_roll",
     "left_knee", "right_knee",                       "left_shoulder_yaw", "right_shoulder_yaw",
-    "left_ankle_roll", "right_ankle_roll",           "left_elbow_pitch", "right_elbow_pitch",
-    "left_ankle_pitch", "right_ankle_pitch",          "left_elbow_yaw", "right_elbow_yaw",
+    "left_ankle_pitch", "right_ankle_pitch",         "left_elbow_pitch", "right_elbow_pitch",
+    "left_ankle_roll", "right_ankle_roll",           "left_elbow_yaw", "right_elbow_yaw",
 ]
 
 parser = argparse.ArgumentParser(description="将npz文件转换回CSV格式，处理关节顺序映射")

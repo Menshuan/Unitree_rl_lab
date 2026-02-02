@@ -17,7 +17,7 @@ from isaaclab.app import AppLauncher
 # add argparse arguments
 parser = argparse.ArgumentParser(description="Replay converted motions.")
 parser.add_argument("--file", "-f", type=str, required=True)
-parser.add_argument("--robot", type=str, required=True, choices=["g1", "m3"], help="Robot type: G1 or M3")
+parser.add_argument("--robot", type=str, required=True, choices=["g1", "m3", "m3_parallel"], help="Robot type: G1 or M3")
 
 # append AppLauncher cli args
 AppLauncher.add_app_launcher_args(parser)
@@ -39,6 +39,7 @@ from isaaclab.utils.assets import ISAAC_NUCLEUS_DIR
 
 from unitree_rl_lab.assets.robots.unitree import UNITREE_G1_29DOF_CFG as G1_ROBOT_CFG  # Currently only support G1-29dof
 from unitree_rl_lab.assets.robots.m3 import M3_CONFIG as M3_ROBOT_CFG
+from unitree_rl_lab.assets.robots.m3_parallel import M3_PARALLEL_CONFIG as M3_PARALLEL_CONFIG
 from unitree_rl_lab.tasks.mimic.mdp import MotionLoader
 
 ##
@@ -63,6 +64,8 @@ class ReplayMotionsSceneCfg(InteractiveSceneCfg):
     # articulation
     if args_cli.robot == "m3":
         robot: ArticulationCfg = M3_ROBOT_CFG.replace(prim_path="{ENV_REGEX_NS}/Robot")
+    elif args_cli.robot == "m3_parallel":
+        robot: ArticulationCfg = M3_PARALLEL_CONFIG.replace(prim_path="{ENV_REGEX_NS}/Robot")
     else:
         robot: ArticulationCfg = G1_ROBOT_CFG.replace(prim_path="{ENV_REGEX_NS}/Robot")
 

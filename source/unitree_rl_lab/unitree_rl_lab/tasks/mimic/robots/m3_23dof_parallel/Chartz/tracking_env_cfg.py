@@ -90,7 +90,7 @@ class CommandsCfg:
         asset_name="robot",
         # generate npz file before training
         # python python scripts/mimic/csv_to_npz.py -f path/to/G1_gangnam_style_V01.bvh_60hz.csv --input_fps 60
-        motion_file=f"{os.path.dirname(__file__)}/dance1_subject2_50FPS.npz",
+        motion_file=f"{os.path.dirname(__file__)}/dance1_subject2_50FPS_parallel.npz",
         anchor_body_name="torso_link",
         resampling_time_range=(1.0e9, 1.0e9),
         debug_vis=True,
@@ -108,10 +108,10 @@ class CommandsCfg:
             "pelvis_link",
             "left_hip_roll_link",
             "left_knee_link",
-            "left_ankle_roll_link",
+            "left_ankle_pitch_link",
             "right_hip_roll_link",
             "right_knee_link",
-            "right_ankle_roll_link",
+            "right_ankle_pitch_link",
             "torso_link",
             "left_shoulder_roll_link",
             "left_elbow_pitch_link",
@@ -270,7 +270,7 @@ class RewardsCfg:
             "sensor_cfg": SceneEntityCfg(
                 "contact_forces",
                 body_names=[
-                    r"^(?!left_ankle_roll_link$)(?!right_ankle_roll_link$).+$"
+                    r"^(?!left_ankle_pitch_link$)(?!right_ankle_pitch_link$).+$"
                 ],
             ),
             "threshold": 1.0,
@@ -297,8 +297,8 @@ class TerminationsCfg:
             "command_name": "motion",
             "threshold": 0.25,
             "body_names": [
-                "left_ankle_roll_link",
-                "right_ankle_roll_link",
+                "left_ankle_pitch_link",
+                "right_ankle_pitch_link",
             ],
         },
     )

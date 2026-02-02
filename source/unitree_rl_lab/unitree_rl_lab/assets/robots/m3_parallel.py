@@ -13,13 +13,13 @@ ARMATURE_70_25 = INTERTIA_OF_THE_MOTOR_70_25 * 25**2
 
 NATURAL_FREQ = 10 * 2.0 * 3.1415926535
 
-DAMPING_RATIO = 0.9 # 2.0
+DAMPING_RATIO = 2.0
 
-STIFFNESS_90_25 = 200 # ARMATURE_90_25 * NATURAL_FREQ**2
-STIFFNESS_70_25 = 150 # ARMATURE_70_25 * NATURAL_FREQ**2
+STIFFNESS_90_25 = ARMATURE_90_25 * NATURAL_FREQ**2
+STIFFNESS_70_25 = ARMATURE_70_25 * NATURAL_FREQ**2
 
-DAMPING_90_25 = 6 # 2.0 * DAMPING_RATIO * ARMATURE_90_25 * NATURAL_FREQ
-DAMPING_70_25 = 4.5 # 2.0 * DAMPING_RATIO * ARMATURE_70_25 * NATURAL_FREQ
+DAMPING_90_25 = 2.0 * DAMPING_RATIO * ARMATURE_90_25 * NATURAL_FREQ
+DAMPING_70_25 = 2.0 * DAMPING_RATIO * ARMATURE_70_25 * NATURAL_FREQ
 
 print("======================================= M3 Parameters =======================================")
 print("STIFFNESS_90_25:", STIFFNESS_90_25)
@@ -40,7 +40,7 @@ M3_PARALLEL_CONFIG = GLRArticulationCfg(
     spawn=sim_utils.UrdfFileCfg(
         fix_base=False,
         replace_cylinders_with_capsules=True,
-        asset_path=f"{ASSET_DIR}/m3_parallel_description/urdf/m3_parallel_23dof.urdf",
+        asset_path=f"{ASSET_DIR}/m3_parallel_description/urdf/m3_23dof.urdf",
         activate_contact_sensors=True,
         rigid_props=sim_utils.RigidBodyPropertiesCfg(
             disable_gravity=False,
@@ -52,7 +52,7 @@ M3_PARALLEL_CONFIG = GLRArticulationCfg(
             max_depenetration_velocity=1.0,
         ),
         articulation_props=sim_utils.ArticulationRootPropertiesCfg(
-            enabled_self_collisions=False, solver_position_iteration_count=8, solver_velocity_iteration_count=4
+            enabled_self_collisions=True, solver_position_iteration_count=8, solver_velocity_iteration_count=4
         ),
         joint_drive=sim_utils.UrdfConverterCfg.JointDriveCfg(
             gains=sim_utils.UrdfConverterCfg.JointDriveCfg.PDGainsCfg(stiffness=0, damping=0)
