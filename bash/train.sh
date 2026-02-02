@@ -79,8 +79,8 @@ nohup python scripts/rsl_rl/train.py \
         > "$LOG_FILE" 2>&1 &
 # nohup python scripts/rsl_rl/train.py \
 #         --task GLR-M3-23dof-Mimic-Chartz_Rough --experiment_name Chartz \
-#         --resume --load_run 2026-01-09_16-49-12 \
-#         --device cuda:1 --headless --max_iteration 100000 \
+#         --resume --load_run 2026-01-29_11-51-10 \
+#         --device cuda:0 --headless --max_iteration 100000 \
 #         > "$LOG_FILE" 2>&1 &
 # python3 scripts/rsl_rl/train.py --task GLR-M3-23dof-Mimic-SideKick --experiment_name SideKick --num_envs 4 --device cuda:0 \
 #         --kit_args "--/log/level=error --/log/outputStreamLevel=error --/log/fileLogLevel=error"
