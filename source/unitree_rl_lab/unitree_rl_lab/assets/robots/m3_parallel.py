@@ -52,7 +52,7 @@ M3_PARALLEL_CONFIG = GLRArticulationCfg(
             max_depenetration_velocity=1.0,
         ),
         articulation_props=sim_utils.ArticulationRootPropertiesCfg(
-            enabled_self_collisions=True, solver_position_iteration_count=8, solver_velocity_iteration_count=4
+            enabled_self_collisions=False, solver_position_iteration_count=8, solver_velocity_iteration_count=4
         ),
         joint_drive=sim_utils.UrdfConverterCfg.JointDriveCfg(
             gains=sim_utils.UrdfConverterCfg.JointDriveCfg.PDGainsCfg(stiffness=0, damping=0)
@@ -117,8 +117,8 @@ M3_PARALLEL_CONFIG = GLRArticulationCfg(
             effort_limit_sim=105.0,
             velocity_limit_sim=12.5,
             joint_names_expr=[".*_ankle_pitch_joint", ".*_ankle_roll_joint"],
-            stiffness=STIFFNESS_70_25,
-            damping=DAMPING_70_25,
+            stiffness=150, # STIFFNESS_70_25,
+            damping=5, # DAMPING_70_25,
             armature=ARMATURE_70_25,
         ),
         # "waist": ImplicitActuatorCfg(
