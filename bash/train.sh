@@ -75,11 +75,13 @@ LOG_FILE="$LOG_DATE_DIR/$(date +%H-%M-%S).log"
 
 # nohup python scripts/rsl_rl/train.py \
 #         --task GLR-M3-23dof-Mimic-Chartz --experiment_name Chartz \
+#         --run_name old_urdf \
 #         --device cuda:0 --headless \
 #         > "$LOG_FILE" 2>&1 &
 # nohup python scripts/rsl_rl/train.py \
 #         --task GLR-M3-23dof-Mimic-Chartz_Rough --experiment_name Chartz \
-#         --resume --load_run 2026-01-29_11-51-10 \
+#         --run_name old_urdf \
+#         --resume --load_run 2026-02-03_20-28-04_old_urdf \
 #         --device cuda:0 --headless --max_iteration 100000 \
 #         > "$LOG_FILE" 2>&1 &
 # python3 scripts/rsl_rl/train.py --task GLR-M3-23dof-Mimic-SideKick --experiment_name SideKick --num_envs 4 --device cuda:0 \
@@ -115,7 +117,13 @@ LOG_FILE="$LOG_DATE_DIR/$(date +%H-%M-%S).log"
 #         > "$LOG_FILE" 2>&1 &
 
 
+# nohup python scripts/rsl_rl/train.py \
+#         --task GLR-M3-23dof_parallel-Mimic-Chartz --experiment_name Chartz_Parallel \
+#         --device cuda:0 --headless \
+#         > "$LOG_FILE" 2>&1 &
+
 nohup python scripts/rsl_rl/train.py \
-        --task GLR-M3-23dof_parallel-Mimic-Chartz --experiment_name Chartz_Parallel \
+        --task GLR-M3-23dof_parallel-Mimic-Chartz_Rough --experiment_name Chartz_Parallel \
+        --resume --load_run 2026-02-04_15-12-51 --run_name RoughResume \
         --device cuda:0 --headless \
         > "$LOG_FILE" 2>&1 &
