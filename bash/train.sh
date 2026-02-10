@@ -104,6 +104,22 @@ LOG_FILE="$LOG_DATE_DIR/$(date +%H-%M-%S).log"
 # python3 scripts/rsl_rl/train.py --task GLR-M3-23dof_parallel-Velocity --experiment_name Test --num_envs 4 --device cuda:0 --headless \
 #         --kit_args "--/log/level=error --/log/outputStreamLevel=error --/log/fileLogLevel=error"
 
+# nohup python scripts/rsl_rl/train.py \
+#         --task GLR-M3-23dof-Velocity_Rough --experiment_name Walk \
+#         --resume --load_run 2026-02-04_16-53-06_old_urdf \
+#         --run_name RoughResume \
+#         --device cuda:1 --headless \
+#         > "$LOG_FILE" 2>&1 &
+
+# nohup python scripts/rsl_rl/train.py \
+#         --task GLR-M3-23dof-Velocity_Rough --experiment_name Walk \
+#         --resume --load_run 2026-02-04_16-53-06_old_urdf \
+#         --run_name RoughResume \
+#         --device cuda:1 --headless \
+#         > "$LOG_FILE" 2>&1 &
+
+# python3 scripts/rsl_rl/train.py --task GLR-M3-23dof-Velocity_Rough --experiment_name Test --num_envs 4 --device cuda:0 --headless \
+#         --kit_args "--/log/level=error --/log/outputStreamLevel=error --/log/fileLogLevel=error"
 
 # nohup python scripts/rsl_rl/train.py \
 #         --task GLR-M3-23dof_parallel-Velocity --experiment_name Walk_Parallel \
@@ -122,8 +138,21 @@ LOG_FILE="$LOG_DATE_DIR/$(date +%H-%M-%S).log"
 #         --device cuda:0 --headless \
 #         > "$LOG_FILE" 2>&1 &
 
+# nohup python scripts/rsl_rl/train.py \
+#         --task GLR-M3-23dof_parallel-Mimic-Chartz_Rough --experiment_name Chartz_Parallel \
+#         --resume --load_run 2026-02-04_15-12-51 --run_name RoughResume \
+#         --device cuda:0 --headless \
+#         > "$LOG_FILE" 2>&1 &
+
+
+# nohup python scripts/rsl_rl/train.py \
+#         --task GLR-M3-12dof-Velocity --experiment_name 12dof_Walk \
+#         --device cuda:0 --headless \
+#         > "$LOG_FILE" 2>&1 &
+# python3 scripts/rsl_rl/train.py --task GLR-M3-12dof-Velocity --experiment_name Test --num_envs 4 --device cuda:0 --headless \
+#         --kit_args "--/log/level=error --/log/outputStreamLevel=error --/log/fileLogLevel=error"
+
 nohup python scripts/rsl_rl/train.py \
-        --task GLR-M3-23dof_parallel-Mimic-Chartz_Rough --experiment_name Chartz_Parallel \
-        --resume --load_run 2026-02-04_15-12-51 --run_name RoughResume \
-        --device cuda:0 --headless \
+        --task GLR-M3-23dof-Velocity --experiment_name 23dof_Walk \
+        --device cuda:1 --headless \
         > "$LOG_FILE" 2>&1 &

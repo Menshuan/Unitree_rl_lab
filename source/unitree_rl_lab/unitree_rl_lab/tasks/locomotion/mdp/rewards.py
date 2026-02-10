@@ -29,14 +29,14 @@ Joint penalties.
 #     return torch.sum(torch.abs(qvel) * torch.abs(qfrc), dim=-1)
 
 
-# def stand_still(
-#     env: ManagerBasedRLEnv, command_name: str = "base_velocity", asset_cfg: SceneEntityCfg = SceneEntityCfg("robot")
-# ) -> torch.Tensor:
-#     asset: Articulation = env.scene[asset_cfg.name]
+def stand_still(
+    env: ManagerBasedRLEnv, command_name: str = "base_velocity", asset_cfg: SceneEntityCfg = SceneEntityCfg("robot")
+) -> torch.Tensor:
+    asset: Articulation = env.scene[asset_cfg.name]
 
-#     reward = torch.sum(torch.abs(asset.data.joint_pos - asset.data.default_joint_pos), dim=1)
-#     cmd_norm = torch.norm(env.command_manager.get_command(command_name), dim=1)
-#     return reward * (cmd_norm < 0.1)
+    reward = torch.sum(torch.abs(asset.data.joint_pos - asset.data.default_joint_pos), dim=1)
+    cmd_norm = torch.norm(env.command_manager.get_command(command_name), dim=1)
+    return reward * (cmd_norm < 0.1)
 
 
 # """
@@ -358,3 +358,9 @@ def feet_too_near_humanoid(
     feet_pos = asset.data.body_pos_w[:, asset_cfg.body_ids, :]
     distance = torch.norm(feet_pos[:, 0] - feet_pos[:, 1], dim=-1)
     return (threshold - distance).clamp(min=0)
+
+def action_rate(env: ManagerBasedRLEnv) -> torch.Tensor:
+    """Penalize the rate of change of the actions using L2 squared kernel."""
+    reward = torch.sum(torch.square(env.action_manager.action - env.action_manager.prev_action), dim=1)
+    reward = torch.clamp(reward, min=-1.0, max=1.0)
+    return reward

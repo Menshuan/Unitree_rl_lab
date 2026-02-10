@@ -1,7 +1,7 @@
 import gymnasium as gym
 
 gym.register(
-    id="GLR-M3-23dof-Velocity",
+    id="GLR-M3-12dof-Velocity",
     entry_point="isaaclab.envs:ManagerBasedRLEnv",
     disable_env_checker=True,
     kwargs={
@@ -12,7 +12,7 @@ gym.register(
 )
 
 gym.register(
-    id="GLR-M3-23dof-Velocity_Rough",
+    id="GLR-M3-12dof-Velocity_Rough",
     entry_point="isaaclab.envs:ManagerBasedRLEnv",
     disable_env_checker=True,
     kwargs={

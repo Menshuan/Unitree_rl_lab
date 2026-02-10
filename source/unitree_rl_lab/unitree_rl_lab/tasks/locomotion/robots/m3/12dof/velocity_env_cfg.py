@@ -18,7 +18,7 @@ from isaaclab.utils import configclass
 from isaaclab.utils.assets import ISAAC_NUCLEUS_DIR, ISAACLAB_NUCLEUS_DIR
 from isaaclab.utils.noise import AdditiveUniformNoiseCfg as Unoise
 
-from unitree_rl_lab.assets.robots.m3 import M3_23DOF_VELOCITY_CONFIG as ROBOT_CFG
+from unitree_rl_lab.assets.robots.m3 import M3_12DOF_VELOCITY_CONFIG as ROBOT_CFG
 from unitree_rl_lab.tasks.locomotion import mdp
 from unitree_rl_lab.utils.terrain_generator_cfg import *
 
@@ -42,26 +42,6 @@ COBBLESTONE_ROAD_CFG = terrain_gen.TerrainGeneratorCfg(
 class RobotSceneCfg(InteractiveSceneCfg):
     """Configuration for the terrain scene with a legged robot."""
 
-    # ground terrain
-    # terrain = TerrainImporterCfg(
-    #     prim_path="/World/ground",
-    #     terrain_type="generator",  # "plane", "generator"
-    #     terrain_generator=COBBLESTONE_ROAD_CFG, # COBBLESTONE_ROAD_CFG,  # None, ROUGH_TERRAINS_CFG
-    #     max_init_terrain_level=5, # COBBLESTONE_ROAD_CFG.num_rows - 1,
-    #     collision_group=-1,
-    #     physics_material=sim_utils.RigidBodyMaterialCfg(
-    #         friction_combine_mode="multiply",
-    #         restitution_combine_mode="multiply",
-    #         static_friction=1.0,
-    #         dynamic_friction=1.0,
-    #     ),
-    #     visual_material=sim_utils.MdlFileCfg(
-    #         mdl_path=f"{ISAACLAB_NUCLEUS_DIR}/Materials/TilesMarbleSpiderWhiteBrickBondHoned/TilesMarbleSpiderWhiteBrickBondHoned.mdl",
-    #         project_uvw=True,
-    #         texture_scale=(0.25, 0.25),
-    #     ),
-    #     debug_vis=False,
-    # )
     terrain = TerrainImporterCfg(
         prim_path="/World/ground",
         terrain_type="plane",  # "plane", "generator"
@@ -85,7 +65,7 @@ class RobotSceneCfg(InteractiveSceneCfg):
 
     # sensors
     height_scanner = RayCasterCfg(
-        prim_path="{ENV_REGEX_NS}/Robot/torso_link",
+        prim_path="{ENV_REGEX_NS}/Robot/pelvis_link",
         offset=RayCasterCfg.OffsetCfg(pos=(0.0, 0.0, 20.0)),
         ray_alignment="yaw",
         pattern_cfg=patterns.GridPatternCfg(resolution=0.1, size=[1.6, 1.0]),
@@ -124,7 +104,7 @@ class EventCfg:
         func=mdp.randomize_rigid_body_mass,
         mode="startup",
         params={
-            "asset_cfg": SceneEntityCfg("robot", body_names="torso_link"),
+            "asset_cfg": SceneEntityCfg("robot", body_names="pelvis_link"),
             "mass_distribution_params": (-1.0, 3.0),
             "operation": "add",
         },
@@ -135,7 +115,7 @@ class EventCfg:
         func=mdp.apply_external_force_torque,
         mode="reset",
         params={
-            "asset_cfg": SceneEntityCfg("robot", body_names="torso_link"),
+            "asset_cfg": SceneEntityCfg("robot", body_names="pelvis_link"),
             "force_range": (0.0, 0.0),
             "torque_range": (-0.0, 0.0),
         },
@@ -418,16 +398,7 @@ class RewardsCfg:
         weight=-0.1,
         params={
             "asset_cfg": SceneEntityCfg(
-                "robot", joint_names=[".*_hip_yaw.*", ".*_hip_roll.*", ".*_shoulder_pitch.*", ".*_elbow.*"]
-            )
-        },
-    )
-    joint_deviation_arms = RewTerm(
-        func=mdp.joint_deviation_l1,
-        weight=-0.2,
-        params={
-            "asset_cfg": SceneEntityCfg(
-                "robot", joint_names=[".*waist.*", ".*_shoulder_roll.*", ".*_shoulder_yaw.*"]
+                "robot", joint_names=[".*_hip_yaw.*", ".*_hip_roll.*"]
             )
         },
     )
