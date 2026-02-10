@@ -24,7 +24,7 @@ from isaaclab.utils.noise import AdditiveUniformNoiseCfg as Unoise
 
 import unitree_rl_lab.tasks.mimic.mdp as mdp
 from unitree_rl_lab.assets.robots.m3 import M3_ACTION_SCALE
-from unitree_rl_lab.assets.robots.m3 import M3_CONFIG as ROBOT_CFG
+from unitree_rl_lab.assets.robots.m3 import M3_MIMIC_CONFIG as ROBOT_CFG
 from unitree_rl_lab.utils.terrain_generator_cfg import *
 
 ##
@@ -270,7 +270,7 @@ class RewardsCfg:
             "sensor_cfg": SceneEntityCfg(
                 "contact_forces",
                 body_names=[
-                    r"^(?!left_ankle_pitch_link$)(?!right_ankle_pitch_link$).+$"
+                    r"^(?!left_ankle_roll_link$)(?!right_ankle_roll_link$).+$"
                 ],
             ),
             "threshold": 1.0,
@@ -297,8 +297,8 @@ class TerminationsCfg:
             "command_name": "motion",
             "threshold": 0.25,
             "body_names": [
-                "left_ankle_pitch_link",
-                "right_ankle_pitch_link",
+                "left_ankle_roll_link",
+                "right_ankle_roll_link",
                 "left_elbow_yaw_link",
                 "right_elbow_yaw_link",
             ],

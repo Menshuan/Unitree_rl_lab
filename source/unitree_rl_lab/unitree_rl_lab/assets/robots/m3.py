@@ -28,7 +28,7 @@ class GLRArticulationCfg(ArticulationCfg):
 
     soft_joint_pos_limit_factor = 0.9
 
-M3_CONFIG = GLRArticulationCfg(
+M3_MIMIC_CONFIG = GLRArticulationCfg(
     spawn=sim_utils.UrdfFileCfg(
         fix_base=False,
         replace_cylinders_with_capsules=True,
@@ -203,7 +203,7 @@ M3_CONFIG = GLRArticulationCfg(
 )
 
 M3_ACTION_SCALE = {}
-for a in M3_CONFIG.actuators.values():
+for a in M3_MIMIC_CONFIG.actuators.values():
     e = a.effort_limit_sim
     s = a.stiffness
     names = a.joint_names_expr

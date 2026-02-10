@@ -38,7 +38,7 @@ from isaaclab.utils import configclass
 from isaaclab.utils.assets import ISAAC_NUCLEUS_DIR
 
 from unitree_rl_lab.assets.robots.unitree import UNITREE_G1_29DOF_CFG as G1_ROBOT_CFG  # Currently only support G1-29dof
-from unitree_rl_lab.assets.robots.m3 import M3_CONFIG as M3_ROBOT_CFG
+from unitree_rl_lab.assets.robots.m3 import M3_MIMIC_CONFIG as M3_ROBOT_CFG
 from unitree_rl_lab.assets.robots.m3_parallel import M3_PARALLEL_CONFIG as M3_PARALLEL_CONFIG
 from unitree_rl_lab.tasks.mimic.mdp import MotionLoader
 

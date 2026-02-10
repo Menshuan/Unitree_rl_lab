@@ -24,7 +24,7 @@ from isaaclab.utils.noise import AdditiveUniformNoiseCfg as Unoise
 
 import unitree_rl_lab.tasks.mimic.mdp as mdp
 from unitree_rl_lab.assets.robots.m3 import M3_ACTION_SCALE
-from unitree_rl_lab.assets.robots.m3 import M3_CONFIG as ROBOT_CFG
+from unitree_rl_lab.assets.robots.m3 import M3_MIMIC_CONFIG as ROBOT_CFG
 from unitree_rl_lab.utils.terrain_generator_cfg import *
 
 ##

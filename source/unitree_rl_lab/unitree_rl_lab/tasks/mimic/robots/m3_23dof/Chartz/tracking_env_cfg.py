@@ -24,7 +24,7 @@ from isaaclab.utils.noise import AdditiveUniformNoiseCfg as Unoise
 
 import unitree_rl_lab.tasks.mimic.mdp as mdp
 from unitree_rl_lab.assets.robots.m3 import M3_ACTION_SCALE
-from unitree_rl_lab.assets.robots.m3 import M3_CONFIG as ROBOT_CFG
+from unitree_rl_lab.assets.robots.m3 import M3_MIMIC_CONFIG as ROBOT_CFG
 from unitree_rl_lab.utils.terrain_generator_cfg import *
 
 ##
@@ -98,7 +98,7 @@ class CommandsCfg:
             "x": (-0.05, 0.05),
             "y": (-0.05, 0.05),
             "z": (-0.01, 0.01),
-            "roll": (0.1, 0.3),
+            "roll": (-0.1, 0.1),
             "pitch": (-0.1, 0.1),
             "yaw": (-0.2, 0.2),
         },
@@ -299,6 +299,8 @@ class TerminationsCfg:
             "body_names": [
                 "left_ankle_roll_link",
                 "right_ankle_roll_link",
+                "left_elbow_yaw_link",
+                "right_elbow_yaw_link",
             ],
         },
     )
