@@ -80,3 +80,5 @@ backup/
 unitree_model/
 unitree_ros/
 Retarget_GMR/
+
+*.sh
