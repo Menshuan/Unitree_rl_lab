@@ -23,7 +23,7 @@ from isaaclab.utils import configclass
 from isaaclab.utils.noise import AdditiveUniformNoiseCfg as Unoise
 
 import unitree_rl_lab.tasks.mimic.mdp as mdp
-from unitree_rl_lab.assets.robots.m3 import M3_ACTION_SCALE
+from unitree_rl_lab.assets.robots.m3 import M3_MIMIC_ACTION_SCALE
 from unitree_rl_lab.assets.robots.m3 import M3_MIMIC_CONFIG as ROBOT_CFG
 from unitree_rl_lab.utils.terrain_generator_cfg import *
 
@@ -128,7 +128,7 @@ class ActionsCfg:
     """Action specifications for the MDP."""
 
     JointPositionAction = mdp.JointPositionActionCfg(
-        asset_name="robot", joint_names=[".*"], scale=M3_ACTION_SCALE, use_default_offset=True
+        asset_name="robot", joint_names=[".*"], scale=M3_MIMIC_ACTION_SCALE, use_default_offset=True
     )
 
 

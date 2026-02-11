@@ -65,11 +65,11 @@ LOG_FILE="$LOG_DATE_DIR/$(date +%H-%M-%S).log"
 #         --task GLR-M3-23dof-Mimic-CartWheel --experiment_name CartWheel \
 #         --device cuda:0 --headless \
 #         > "$LOG_FILE" 2>&1 &
-# nohup python scripts/rsl_rl/train.py \
-#         --task GLR-M3-23dof-Mimic-CartWheel_Rough --experiment_name CartWheel \
-#         --resume --load_run 2026-01-20_11-49-11 \
-#         --device cuda:0 --headless \
-#         > "$LOG_FILE" 2>&1 &
+nohup python scripts/rsl_rl/train.py \
+        --task GLR-M3-23dof-Mimic-CartWheel_Rough --experiment_name CartWheel \
+        --resume --load_run 2026-02-10_08-59-32_old_urdf \
+        --device cuda:0 --headless --max_iteration 100000 \
+        > "$LOG_FILE" 2>&1 &
 
 
 
@@ -152,7 +152,7 @@ LOG_FILE="$LOG_DATE_DIR/$(date +%H-%M-%S).log"
 # python3 scripts/rsl_rl/train.py --task GLR-M3-12dof-Velocity --experiment_name Test --num_envs 4 --device cuda:0 --headless \
 #         --kit_args "--/log/level=error --/log/outputStreamLevel=error --/log/fileLogLevel=error"
 
-nohup python scripts/rsl_rl/train.py \
-        --task GLR-M3-23dof-Velocity --experiment_name 23dof_Walk \
-        --device cuda:1 --headless \
-        > "$LOG_FILE" 2>&1 &
+# nohup python scripts/rsl_rl/train.py \
+#         --task GLR-M3-23dof-Velocity --experiment_name 23dof_Walk \
+#         --device cuda:1 --headless \
+#         > "$LOG_FILE" 2>&1 &

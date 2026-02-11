@@ -62,7 +62,7 @@ from isaaclab.utils.dict import print_dict
 from isaaclab.utils.pretrained_checkpoint import get_published_pretrained_checkpoint
 from isaaclab_rl.rsl_rl import RslRlOnPolicyRunnerCfg, RslRlVecEnvWrapper, export_policy_as_jit, export_policy_as_onnx
 from isaaclab_tasks.utils import get_checkpoint_path
-from unitree_rl_lab.assets.robots.m3 import M3_ACTION_SCALE
+from unitree_rl_lab.assets.robots.m3 import M3_MIMIC_ACTION_SCALE
 
 import unitree_rl_lab.tasks  # noqa: F401
 from unitree_rl_lab.utils.parser_cfg import parse_env_cfg
@@ -190,8 +190,8 @@ def main():
     # 创建一个列表，按照关节顺序存放缩放系数
     scale_list = []
     for joint_name in joint_names:
-        if joint_name in M3_ACTION_SCALE:
-            scale_list.append(M3_ACTION_SCALE[joint_name])
+        if joint_name in M3_MIMIC_ACTION_SCALE:
+            scale_list.append(M3_MIMIC_ACTION_SCALE[joint_name])
         else:
             # 如果没有找到对应的缩放系数，使用默认值（比如1.0）
             scale_list.append(1.0)

@@ -202,7 +202,7 @@ M3_MIMIC_CONFIG = GLRArticulationCfg(
     ],
 )
 
-M3_ACTION_SCALE = {}
+M3_MIMIC_ACTION_SCALE = {}
 for a in M3_MIMIC_CONFIG.actuators.values():
     e = a.effort_limit_sim
     s = a.stiffness
@@ -213,8 +213,8 @@ for a in M3_MIMIC_CONFIG.actuators.values():
         s = {n: s for n in names}
     for n in names:
         if n in e and n in s and s[n]:
-            M3_ACTION_SCALE[n] = 0.25 * e[n] / s[n]
-print("ACTION SCALE :%s" % str(M3_ACTION_SCALE))
+            M3_MIMIC_ACTION_SCALE[n] = 0.25 * e[n] / s[n]
+print("ACTION SCALE :%s" % str(M3_MIMIC_ACTION_SCALE))
 
 
 M3_23DOF_VELOCITY_CONFIG = GLRArticulationCfg(

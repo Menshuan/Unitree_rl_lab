@@ -31,17 +31,17 @@
 #         --resume --load_run 2026-02-04_09-14-43_old_urdf \
 #         --kit_args "--/log/level=error --/log/outputStreamLevel=error --/log/fileLogLevel=error"
 
-python scripts/rsl_rl/play.py --task GLR-M3-23dof_parallel-Mimic-Chartz --experiment_name Chartz_Parallel \
-        --resume --load_run 2026-02-04_15-12-51 \
-        --kit_args "--/log/level=error --/log/outputStreamLevel=error --/log/fileLogLevel=error"
+# python scripts/rsl_rl/play.py --task GLR-M3-23dof_parallel-Mimic-Chartz --experiment_name Chartz_Parallel \
+#         --resume --load_run 2026-02-04_15-12-51 \
+#         --kit_args "--/log/level=error --/log/outputStreamLevel=error --/log/fileLogLevel=error"
 
 # python scripts/rsl_rl/play.py --task GLR-M3-23dof-Mimic-SideKick --experiment_name SideKick \
 #         --resume --load_run 2026-01-12_09-16-14 --debug  \
 #         --kit_args "--/log/level=error --/log/outputStreamLevel=error --/log/fileLogLevel=error"
 
-# python scripts/rsl_rl/play.py --task GLR-M3-23dof-Mimic-CartWheel --experiment_name CartWheel \
-#         --resume --load_run 2026-01-21_09-40-14 \
-#         --kit_args "--/log/level=error --/log/outputStreamLevel=error --/log/fileLogLevel=error"
+python scripts/rsl_rl/play.py --task GLR-M3-23dof-Mimic-CartWheel --experiment_name CartWheel \
+        --resume --load_run 2026-01-21_09-40-14 \
+        --kit_args "--/log/level=error --/log/outputStreamLevel=error --/log/fileLogLevel=error"
 
 # python scripts/rsl_rl/play.py --task GLR-M3-23dof-Velocity --experiment_name Walk \
 #         --resume --load_run 2026-01-23_15-54-01 --num_envs 1   \
